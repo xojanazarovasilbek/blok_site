@@ -2,6 +2,21 @@
 <html lang="en">
 {% load static %}
 <head>
+
+		{% if messages %}
+		{% for message in messages %}
+			<div class="alert alert-{{ message.tags }}">{{ message }}</div>
+		{% endfor %}
+	{% endif %}
+<p><a href="{%url 'logout'%}">Chiqish</a></p>
+<a href="{% url 'register' %}">Ro'yxatdan o'tish</a><br>
+{% if user.is_authencated %}
+	<a href="{% url 'logout '%}">Chiqish</a><br>
+{% else %}
+	<a href="{% url 'login'%}">login</a><br>
+{%endif%}
+
+
 	<title>Home 01</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -3051,7 +3066,7 @@
 											<!-- Item post -->
 											<div class="flex-wr-sb-s m-b-30">
 												<a href="blog-detail-01.html" class="size-w-1 wrap-pic-w hov1 trans-03">
-													<img src="images/post-09.jpg" alt="IMG">
+													<img src="{%static 'images/post-09.jpg'%}" alt="IMG">
 												</a>
 
 												<div class="size-w-2">
@@ -4470,19 +4485,19 @@
 							<!-- Item latest -->	
 							<div class="m-b-45">
 								<a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
-									<img src="images/latest-01.jpg" alt="IMG">
+									<img src="{{ news.0.image.url }}" alt="IMG">
 								</a>
 
 								<div class="p-t-16">
 									<h5 class="p-b-5">
 										<a href="blog-detail-01.html" class="f1-m-3 cl2 hov-cl10 trans-03">
-											You wish lorem ipsum dolor sit amet consectetur 
+											{{ news.0.title }}
 										</a>
 									</h5>
 
 									<span class="cl8">
 										<a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-											by John Alvarado
+											{{ news.0.category.name }}
 										</a>
 
 										<span class="f1-s-3 m-rl-3">
@@ -4490,7 +4505,7 @@
 										</span>
 
 										<span class="f1-s-3">
-											Feb 18
+											{{ news.0.created_at|date:"d M Y" }}
 										</span>
 									</span>
 								</div>
@@ -4501,19 +4516,19 @@
 							<!-- Item latest -->	
 							<div class="m-b-45">
 								<a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
-									<img src="images/latest-02.jpg" alt="IMG">
+									<img src="{{ news.1.image.url }}" alt="IMG">
 								</a>
 
 								<div class="p-t-16">
 									<h5 class="p-b-5">
 										<a href="blog-detail-01.html" class="f1-m-3 cl2 hov-cl10 trans-03">
-											You wish lorem ipsum dolor sit amet consectetur 
+											{{ news.1.title }}
 										</a>
 									</h5>
 
 									<span class="cl8">
 										<a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-											by John Alvarado
+											{{ news.1.category.name }}
 										</a>
 
 										<span class="f1-s-3 m-rl-3">
@@ -4521,7 +4536,7 @@
 										</span>
 
 										<span class="f1-s-3">
-											Feb 16
+											{{ news.1.created_at|date:"d M Y" }}
 										</span>
 									</span>
 								</div>
@@ -4532,19 +4547,19 @@
 							<!-- Item latest -->	
 							<div class="m-b-45">
 								<a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
-									<img src="images/latest-03.jpg" alt="IMG">
+									<img src="{{ news.2.image.url }}" alt="IMG">
 								</a>
 
 								<div class="p-t-16">
 									<h5 class="p-b-5">
 										<a href="blog-detail-01.html" class="f1-m-3 cl2 hov-cl10 trans-03">
-											You wish lorem ipsum dolor sit amet consectetur 
+											{{ news.2.title }}
 										</a>
 									</h5>
 
 									<span class="cl8">
 										<a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-											by John Alvarado
+											{{ news.2.category.name }}
 										</a>
 
 										<span class="f1-s-3 m-rl-3">
@@ -4552,7 +4567,7 @@
 										</span>
 
 										<span class="f1-s-3">
-											Feb 15
+											{{ news.2.created_at|date:"d M Y" }}
 										</span>
 									</span>
 								</div>
@@ -4563,19 +4578,19 @@
 							<!-- Item latest -->	
 							<div class="m-b-45">
 								<a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
-									<img src="images/latest-04.jpg" alt="IMG">
+									<img src="{{ news.3.image.url }}" alt="IMG">
 								</a>
 
 								<div class="p-t-16">
 									<h5 class="p-b-5">
 										<a href="blog-detail-01.html" class="f1-m-3 cl2 hov-cl10 trans-03">
-											You wish lorem ipsum dolor sit amet consectetur 
+											{{ news.3.title }} 
 										</a>
 									</h5>
 
 									<span class="cl8">
 										<a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-											by John Alvarado
+											{{ news.3.category.name }}
 										</a>
 
 										<span class="f1-s-3 m-rl-3">
@@ -4583,7 +4598,7 @@
 										</span>
 
 										<span class="f1-s-3">
-											Feb 13
+											{{ news.3.created_at|date:"d M Y" }}
 										</span>
 									</span>
 								</div>
@@ -4594,19 +4609,19 @@
 							<!-- Item latest -->	
 							<div class="m-b-45">
 								<a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
-									<img src="images/latest-05.jpg" alt="IMG">
+									<img src="{{ news.4.image.url }}" alt="IMG">
 								</a>
 
 								<div class="p-t-16">
 									<h5 class="p-b-5">
 										<a href="blog-detail-01.html" class="f1-m-3 cl2 hov-cl10 trans-03">
-											You wish lorem ipsum dolor sit amet consectetur 
+											{{ news.4.title }} 
 										</a>
 									</h5>
 
 									<span class="cl8">
 										<a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-											by John Alvarado
+											{{ news.4.category.name }}
 										</a>
 
 										<span class="f1-s-3 m-rl-3">
@@ -4614,7 +4629,7 @@
 										</span>
 
 										<span class="f1-s-3">
-											Feb 10
+											{{ news.4.created_at|date:"d M Y" }}
 										</span>
 									</span>
 								</div>
@@ -4625,19 +4640,19 @@
 							<!-- Item latest -->	
 							<div class="m-b-45">
 								<a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
-									<img src="images/latest-06.jpg" alt="IMG">
+									<img src="{{ news.5.image.url }}" alt="IMG">
 								</a>
 
 								<div class="p-t-16">
 									<h5 class="p-b-5">
 										<a href="blog-detail-01.html" class="f1-m-3 cl2 hov-cl10 trans-03">
-											You wish lorem ipsum dolor sit amet consectetur 
+											{{ news.5.title }} 
 										</a>
 									</h5>
 
 									<span class="cl8">
 										<a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-											by John Alvarado
+											{{ news.5.category.name }}
 										</a>
 
 										<span class="f1-s-3 m-rl-3">
@@ -4645,7 +4660,7 @@
 										</span>
 
 										<span class="f1-s-3">
-											Feb 09
+											{{ news.5.created_at|date:"d M Y" }}
 										</span>
 									</span>
 								</div>

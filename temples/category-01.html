@@ -2482,7 +2482,7 @@
 										</span>
 
 										<span class="f1-s-3">
-											{{ news.0.created_at|date:"d M Y" }}
+											{{ news.1.created_at|date:"d M Y" }}
 										</span>
 									</span>
 								</div>
@@ -2490,6 +2490,37 @@
 						</div>
 
 						
+						<div class="col-sm-6 p-r-25 p-r-15-sr991">
+							<!-- Item latest -->	
+							<div class="m-b-45">
+								<a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
+									<img src="{{ news.2.image.url }}" alt="IMG">
+								</a>
+
+								<div class="p-t-16">
+									<h5 class="p-b-5">
+										<a href="blog-detail-01.html" class="f1-m-3 cl2 hov-cl10 trans-03">
+											{{ news.2.title }}
+										</a>
+									</h5>
+
+									<span class="cl8">
+										<a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
+											{{ news.2.user }}
+										</a>
+
+										<span class="f1-s-3 m-rl-3">
+											-
+										</span>
+
+										<span class="f1-s-3">
+											{{ news.2.created_at|date:"d M Y" }}
+										</span>
+									</span>
+								</div>
+							</div>
+						</div>
+
 						<div class="col-sm-6 p-r-25 p-r-15-sr991">
 							<!-- Item latest -->	
 							<div class="m-b-45">
@@ -2515,37 +2546,6 @@
 
 										<span class="f1-s-3">
 											{{ news.3.created_at|date:"d M Y" }}
-										</span>
-									</span>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 p-r-25 p-r-15-sr991">
-							<!-- Item latest -->	
-							<div class="m-b-45">
-								<a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
-									<img src="{{ news.4.image.url }}" alt="IMG">
-								</a>
-
-								<div class="p-t-16">
-									<h5 class="p-b-5">
-										<a href="blog-detail-01.html" class="f1-m-3 cl2 hov-cl10 trans-03">
-											{{ news.4.title }}
-										</a>
-									</h5>
-
-									<span class="cl8">
-										<a href="#" class="f1-s-4 cl8 hov-cl10 trans-03">
-											{{ news.4.user }}
-										</a>
-
-										<span class="f1-s-3 m-rl-3">
-											-
-										</span>
-
-										<span class="f1-s-3">
-											{{ news.4.created_at|date:"d M Y" }}
 										</span>
 									</span>
 								</div>
