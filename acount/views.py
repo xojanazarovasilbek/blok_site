@@ -3,6 +3,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
 from .forms import SignUpForm, LoginForm, ChangePassForm
 from .utils import generic_code, send_to_mail
+from django.contrib.auth.decorators import login_required
 
 def register_view(request):
     if request.method == 'POST':
@@ -33,7 +34,7 @@ def logout_view(request):
     messages.info(request, 'Chiqdingiz.')
     return redirect('login')
 
-
+@login_required
 def change_pass_view(request):
     if request.method == "GET":
         code = generic_code()
@@ -52,15 +53,16 @@ def change_pass_view(request):
 
 
             if not request.user.check_password(old_pass):
-                messages.error(request, 'siz eski parolizdi hato kiridingiz!')
-                return redirect('change-pass')
+                messages.error(request, 'Siz eski parolingizni noto‘g‘ri kiritdingiz!')
+                return redirect('change-pass') 
+
             
             if session_code != code:
                 messages.error(request,'tastiqlash kodingiz xato')
-
+                return redirect('change-pass')
 
             user = request.user
             user.set_password(new_pass)
             user.save()
-            messages.SUCCESS(request, 'parolingiz ozgartirildi')
-            return redirect('profil')
+            messages.success(request, 'Parolingiz o‘zgartirildi')
+            return redirect('profile')

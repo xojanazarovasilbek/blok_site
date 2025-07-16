@@ -63,12 +63,30 @@
             list-style: none;
             padding-left: 0;
         }
+
+        .messages {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 6px;
+            background-color: #e6ffed;
+            color: #2e7d32;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
 
 <div class="form-container">
     <h2>Parolni O'zgartirish</h2>
+
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+    {% endif %}
+
     <form method="post">
         {% csrf_token %}
         {{ form.non_field_errors }}

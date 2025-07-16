@@ -144,3 +144,5 @@ EMAIL_HOST_USER = 'xojanazarovasilbek1908@gmail.com'  # SMTP server username
 EMAIL_HOST_PASSWORD = 'zbky ammr uiug gibq'  # SMTP server password
 EMAIL_USE_SSL = False  # Set to True if using SSL
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER # Default sender email address
+
+LOGIN_URL = '/acount/login/'

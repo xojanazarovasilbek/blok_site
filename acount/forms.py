@@ -53,15 +53,23 @@ class ChangePassForm(forms.Form):
     code = forms.CharField(label='Email yuborilgan kod', max_length=6)
 
 
-    def clean(self):
-        cleane_data = super().clean()
-        new_pass = self.cleaned_data['new_pass']
-        confirm_pass = self.cleaned_data['confirm_pass']
-        if new_pass != confirm_pass:
-            raise forms.ValidationError('Parollar mos emas')
-        return cleane_data
+    # def clean(self):
+    #     cleane_data = super().clean()
+    #     new_pass = self.cleaned_data['new_pass']
+    #     confirm_pass = self.cleaned_data['confirm_pass']
+    #     if new_pass != confirm_pass:
+    #         raise forms.ValidationError('Parollar mos emas')
+    #     return cleane_data
 
-    
+
+    def clean(self):
+        cleaned_data = super().clean()
+        new_pass = cleaned_data.get("new_pass")
+        confirm_pass = cleaned_data.get("confrim_pass")
+
+        if new_pass != confirm_pass:
+            raise forms.ValidationError("Yangi parol va tasdiqlash paroli mos emas!")
+
   
 
 
