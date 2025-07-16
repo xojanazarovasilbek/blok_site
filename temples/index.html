@@ -3,18 +3,21 @@
 {% load static %}
 <head>
 
-		{% if messages %}
-		{% for message in messages %}
-			<div class="alert alert-{{ message.tags }}">{{ message }}</div>
-		{% endfor %}
-	{% endif %}
-<p><a href="{%url 'logout'%}">Chiqish</a></p>
-<a href="{% url 'register' %}">Ro'yxatdan o'tish</a><br>
-{% if user.is_authencated %}
-	<a href="{% url 'logout '%}">Chiqish</a><br>
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
+{% if user.is_authenticated %}
+    <p>Xush kelibsiz, {{ user.username }}</p>
+    <a href="{% url 'profile' %}">Profil</a><br>
+    <a href="{% url 'logout' %}">Chiqish</a><br>
 {% else %}
-	<a href="{% url 'login'%}">login</a><br>
-{%endif%}
+    <a href="{% url 'login' %}">Kirish</a><br>
+    <a href="{% url 'register' %}">Ro'yxatdan o'tish</a><br>
+{% endif %}
+
 
 
 	<title>Home 01</title>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foydalanuvchi Profili</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+            padding: 50px 20px;
+            margin: 0;
+        }
+
+        .profile-container {
+            background-color: #ffffff;
+            max-width: 500px;
+            margin: auto;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .profile-container:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 35px;
+            color: #333;
+        }
+
+        .profile-field {
+            margin-bottom: 20px;
+        }
+
+        .profile-field label {
+            font-weight: 600;
+            color: #555;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .profile-field span {
+            display: block;
+            color: #222;
+            background-color: #f0f4f8;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #dce3ea;
+        }
+
+        .btn-home {
+            display: inline-block;
+            margin-top: 25px;
+            text-align: center;
+            background-color: #4a90e2;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-home:hover {
+            background-color: #357ABD;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="profile-container">
+    <h2>Profil Ma'lumotlari</h2>
+
+    <div class="profile-field">
+        <label>Ism (Name):</label>
+        <span>{{ user.first_name }}</span>
+    </div>
+
+    <div class="profile-field">
+        <label>Familiya (Last Name):</label>
+        <span>{{ user.last_name }}</span>
+    </div>
+
+    <div class="profile-field">
+        <label>Foydalanuvchi nomi (Username):</label>
+        <span>{{ user.username }}</span>
+    </div>
+
+    <div class="profile-field">
+        <label>Email:</label>
+        <span>{{ user.email }}</span>
+    </div>
+
+    <div class="text-center">
+        <a href="{% url 'index' %}" class="btn-home"> Bosh sahifa</a>
+    </div>
+        <div class="text-center">
+        <a href="{% url 'change-pass' %}" class="btn-home"> parol ozgartirish</a>
+    </div>
+</div>
+
+</body>
+</html>

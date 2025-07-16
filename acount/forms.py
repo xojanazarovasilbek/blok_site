@@ -45,3 +45,25 @@ class SignUpForm(forms.ModelForm):
 class LoginForm(AuthenticationForm):
     username = forms.CharField(max_length=120, label='Login')
     password = forms.CharField(label='Parol', widget=forms.PasswordInput)
+
+class ChangePassForm(forms.Form):
+    ol_pass = forms.CharField(label='eski parol', widget=forms.PasswordInput)
+    new_pass = forms.CharField(label='yangi parol', widget=forms.PasswordInput)
+    confrim_pass = forms.CharField(label='parolni tastiqlang', widget=forms.PasswordInput)
+    code = forms.CharField(label='Email yuborilgan kod', max_length=6)
+
+
+    def clean(self):
+        cleane_data = super().clean()
+        new_pass = self.cleaned_data['new_pass']
+        confirm_pass = self.cleaned_data['confirm_pass']
+        if new_pass != confirm_pass:
+            raise forms.ValidationError('Parollar mos emas')
+        return cleane_data
+
+    
+  
+
+
+
+

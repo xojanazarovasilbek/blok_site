@@ -28,5 +28,9 @@ def new_detail(request, pk):
     post = News.objects.get(id=pk)
     return render(request, 'blog-detail-01.html', {'post':post})
 
+@login_required(login_url = 'login')
+def profile(resquest):
+    user = User.objects.get(username=resquest.user.username)
+    return render(resquest, 'profile.html', {'user':user})
 
 
