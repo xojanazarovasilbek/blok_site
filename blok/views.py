@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 # Create your views here.
 def index(request):
     categoriey = Catagory.objects.all()
@@ -24,9 +25,28 @@ def category(request, pk):
     print(news)
     return render(request, 'category-01.html',{'news':news})
 
+
+
+@login_required
 def new_detail(request, pk):
     post = News.objects.get(id=pk)
-    return render(request, 'blog-detail-01.html', {'post':post})
+    all_comments = Comment.objects.filter(news=post).order_by('-id')[:3]
+
+    if request.method == 'POST':
+        msg = request.POST.get('msg')
+        if msg:
+            Comment.objects.create(
+                news=post,
+                pos_text=msg,
+                user=request.user
+            )
+            messages.info(request, 'Muvaffaqiyatli comment qoldirdingiz!')
+            return redirect('detail', pk=pk)
+
+    return render(request, 'blog-detail-01.html', {
+        'post': post,
+        'comments': all_comments
+    })
 
 @login_required(login_url = 'login')
 def profile(resquest):

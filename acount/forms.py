@@ -73,5 +73,16 @@ class ChangePassForm(forms.Form):
   
 
 
+class ResetPassForm(forms.Form):
+    password = forms.CharField(label='Yangi parol',widget=forms.PasswordInput)
+    password_confirm = forms.CharField(label='Yangi parolni tasdiqlang',widget=forms.PasswordInput)
+    code = forms.CharField(label='Tastiqlash kodi',max_length=6)
 
 
+    def clean(self):
+        cleaned_data = super().clean()
+        password = cleaned_data.get("password")
+        password_confirm = cleaned_data.get("password_confirm")
+
+        if password != password_confirm:
+            raise forms.ValidationError("Yangi parol va tasdiqlash paroli mos emas!")

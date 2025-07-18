@@ -273,7 +273,9 @@
 														<a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
 															<img src="images/post-05.jpg" alt="IMG">
 														</a>
-
+														{% for detal in categoriey%}
+														<a class="nav-link" href="{% url 'categor' category.id %}">{{ detal.name }}</a>
+														{% endfor %}
 														<div class="p-t-10">
 															<h5 class="p-b-5">
 																<a href="blog-detail-01.html" class="f1-s-5 cl3 hov-cl10 trans-03">
